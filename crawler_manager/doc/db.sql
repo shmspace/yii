@@ -9,8 +9,8 @@ CREATE TABLE `items` (
       `list_url` varchar(128) DEFAULT NULL,
       `category` varchar(64) DEFAULT NULL,
       `crawler` varchar(32) DEFAULT NULL,
-      `updated_at` datetime NOT NULL DEFAULT NOW(),
-      `created_at` datetime NOT NULL DEFAULT NOW(),
+      `updated_at` datetime NOT NULL,
+      `created_at` datetime NOT NULL,
       PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
@@ -24,8 +24,8 @@ CREATE TABLE `tasks` (
     `xpath2`  varchar(240) DEFAULT NULL,
     `xpath3`  varchar(240) DEFAULT NULL,
     `xpath4`  varchar(240) DEFAULT NULL,
-    `updated_at` datetime NOT NULL DEFAULT NOW(),
-    `created_at` datetime NOT NULL DEFAULT NOW(),
+    `updated_at` datetime NOT NULL,
+    `created_at` datetime NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
@@ -38,8 +38,8 @@ CREATE TABLE `crawler_log` (
     `item_url`   varchar(128) DEFAULT NULL,
     `task_url`   varchar(128) DEFAULT NULL,
     `logs`       varchar(240) DEFAULT NULL,
-    `updated_at` datetime NOT NULL DEFAULT NOW(),
-    `created_at` datetime NOT NULL DEFAULT NOW(),
+    `updated_at` datetime NOT NULL,
+    `created_at` datetime NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
