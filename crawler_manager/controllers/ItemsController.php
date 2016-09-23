@@ -65,6 +65,7 @@ class ItemsController extends Controller
     {
         $model = new Items();
 
+        print_r(Yii::$app->request->post());
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
