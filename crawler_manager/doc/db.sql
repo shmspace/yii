@@ -43,6 +43,16 @@ CREATE TABLE `crawler_log` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
-
-
-
+# 创建爬取日志表
+CREATE TABLE `item_tasks` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `tasks_id`    int(11) DEFAULT NULL,
+    `url`   varchar(128) DEFAULT NULL,
+    `page_url`   varchar(128) DEFAULT NULL,
+    `status`   int(11) DEFAULT NULL,
+    `crawler`   varchar(32) DEFAULT NULL,
+    `page`   int(11) DEFAULT NULL,
+    `updated_at` datetime NOT NULL,
+    `created_at` datetime NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
