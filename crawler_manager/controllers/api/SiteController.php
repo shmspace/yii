@@ -40,6 +40,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $request = Yii::$app->request;
+        if($request->post("name") == ""){
+            return json_encode(["status" => "-1"]);
+        }
         $pre_items = Items::FindAll(["item_url" => $request->post('item_url')]);
         if(count($pre_items) == 0){
             $item = new Items();
