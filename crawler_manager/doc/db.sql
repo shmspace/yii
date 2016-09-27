@@ -56,3 +56,7 @@ CREATE TABLE `item_tasks` (
     `created_at` datetime NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+
+create index id_url on item_tasks(url);
+create index id_item_url on items(item_url);
+

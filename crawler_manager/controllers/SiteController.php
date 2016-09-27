@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
+use app\models\CrawlerLog;
 
 class SiteController extends Controller
 {
@@ -61,7 +62,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $rs = Array();
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler01'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler02'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler03'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler04'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        return str_replace("{", "</br>", str_replace("}", "</br>", str_replace(",", "</br>", json_encode($rs))));
     }
 
     /**
