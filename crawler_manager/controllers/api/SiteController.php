@@ -136,4 +136,21 @@ class SiteController extends Controller
         return json_encode(["status" => $status, "item_status" => $item_status,
             "items_id" => $items_id, "log_id" => $log->id]);
     }
+
+    /**
+     * 查询items
+     *
+     */
+    public function actionFind()
+    {
+        $request = Yii::$app->request;
+        $max_id = $request->get("max_id");
+        $items = Items::findBySql("select id, name, phone, adress, description, item_url from items where id > ".$max_id." limit 10")->all();
+        $result = array();
+        foreach($items as $key => $item){
+            $result[] = $item->attributes;
+        }
+
+        return json_encode($result);
+    }
 }
