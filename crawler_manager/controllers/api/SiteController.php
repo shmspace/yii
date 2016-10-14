@@ -146,12 +146,11 @@ class SiteController extends Controller
         $request = Yii::$app->request;
         $max_id = $request->get("max_id");
         $limit = $request->get("limit");
-        $items = Items::findBySql("select id, name, phone, adress, description, item_url from items where id > ".$max_id." limit ".$limit)->all();
+        $items = Items::findBySql("select id, name, phone, adress, description, item_url, category from items where id > ".$max_id." limit ".$limit)->all();
         $result = array();
         foreach($items as $key => $item){
             $result[] = $item->attributes;
         }
-
         return json_encode($result);
     }
 }
