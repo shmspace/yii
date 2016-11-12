@@ -10,6 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\CrawlerLog;
+use app\models\Items;
 
 class SiteController extends Controller
 {
@@ -63,6 +64,10 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $rs = Array();
+
+        $last_id = Items::find()->orderBy("id desc")->one()->id;
+        $rs[] = array("item_num" => ($last_id - 128115));
+
         $log = CrawlerLog::find()->where(['crawler' => 'crawler03'])->orderBy('id desc')->one();
         if($log) $rs[] = $log->getAttributes();
 
