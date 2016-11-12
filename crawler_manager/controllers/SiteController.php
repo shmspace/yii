@@ -63,16 +63,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $rs = Array();
-        $log = CrawlerLog::find()->where(['crawler' => 'crawler01'])->orderBy('id desc')->one();
-        if($log) $rs[] = $log->getAttributes();
-
-        $log = CrawlerLog::find()->where(['crawler' => 'crawler02'])->orderBy('id desc')->one();
-        if($log) $rs[] = $log->getAttributes();
-
         $log = CrawlerLog::find()->where(['crawler' => 'crawler03'])->orderBy('id desc')->one();
         if($log) $rs[] = $log->getAttributes();
 
         $log = CrawlerLog::find()->where(['crawler' => 'crawler04'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler05'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler06'])->orderBy('id desc')->one();
         if($log) $rs[] = $log->getAttributes();
 
         return str_replace("{", "</br>", str_replace("}", "</br>", str_replace(",", "</br>", json_encode($rs))));
