@@ -65,8 +65,14 @@ class SiteController extends Controller
     {
         $rs = Array();
 
+        $connection = Yii::$app->db;
+        $sql = "select count(id) as need_item_num from items where phone not in (select phone from items where id = 159278) and id > 128115;";
+        $command = $connection->createCommand($sql);
+        $item_num = $command->queryOne();
+
         $last_id = Items::find()->orderBy("id desc")->one()->id;
-        $rs[] = array("item_num" => ($last_id - 128115));
+        $item_num["item_num"] = $last_id - 128115;
+        $rs[] = $item_num;
 
         $log = CrawlerLog::find()->where(['crawler' => 'crawler03'])->orderBy('id desc')->one();
         if($log) $rs[] = $log->getAttributes();
