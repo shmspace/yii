@@ -75,6 +75,15 @@ class SiteController extends Controller
         $log = CrawlerLog::find()->where(['crawler' => 'crawler06'])->orderBy('id desc')->one();
         if($log) $rs[] = $log->getAttributes();
 
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler07'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler08'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
+        $log = CrawlerLog::find()->where(['crawler' => 'crawler09'])->orderBy('id desc')->one();
+        if($log) $rs[] = $log->getAttributes();
+
         return str_replace("{", "</br>", str_replace("}", "</br>", str_replace(",", "</br>", json_encode($rs))));
     }
 
